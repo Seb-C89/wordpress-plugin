@@ -31,22 +31,33 @@ import './editor.scss';
  */
 
 import apiFetch from '@wordpress/api-fetch';
+import {useLayoutEffect, useState} from 'react';
 
 
 export default /*async*/ function Edit() {
 	//wp_enqueue_script( 'wp-api' );
 	//console.log(wp.api);
 
+	const [tables, setTables] = useState('fuck this shit');
+
+	useLayoutEffect( () => {
+        apiFetch( { path: '/myplugin/v1/tables' } ).then( ( tables ) => {
+			setTables(tables);
+			console.log(tables);
+			console.log("USEFFECT USEFFECT USEFFECT USEFFECT USEFFECT USEFFECT USEFFECT USEFFECT")
+		} )
+    }, [ ] );
+
 	// TODO use react statsto replace unusable await ...
 
-	let tabless = "fuck this shit"
+	//let tabless = "fuck this shit"
 
-	/*await*/ apiFetch( { path: '/myplugin/v1/tables' } ).then( ( tables ) => { // TODO what about wp.api ??
+	/*await*/ /*apiFetch( { path: '/myplugin/v1/tables' } ).then( ( tables ) => { // TODO what about wp.api ??
 		console.log(tables)
 		tabless = tables
 	} ).catch((e) => {
 		console.log(e)
-	});
+	});*/
 
 	return (
 		<p { ...useBlockProps() }>
