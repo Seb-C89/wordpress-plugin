@@ -31,10 +31,8 @@ add_action( 'init', 'create_block_copyright_date_block_block_init' );
 
 function get_tables_name(){
 	global $wpdb;
-	$tables = $wpdb->get_results('show tables');
-	return array_map(function ($in) {
-		return $in->Tables_in_wp; // TODO Fuck this shit
-	}, $tables);
+	$status = $wpdb->get_results('show table status');
+	return array_combine(array_column($status, 'Name'), array_column($status, 'Rows'));
 }
 add_action( 'init', 'get_tables_name');
 add_action( 'rest_api_init', function() {

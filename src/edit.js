@@ -51,7 +51,7 @@ export default /*async*/ function Edit() {
 	return (
 		<p { ...useBlockProps() }>
 			{ __(
-				tabless,
+				JSON.stringify(tables),
 				'copyright-date-block'
 			) }
 		</p>
