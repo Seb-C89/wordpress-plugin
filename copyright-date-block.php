@@ -41,8 +41,10 @@ add_action( 'rest_api_init', function() {
 		'callback' => 'get_tables_name',
 		'permission_callback' => '__return_true'
 	));
+	
 });
-
+add_option('last_update', 'hello world!');
+add_option('tables_count', 'hello world!');
 /*function dependecy(){
 	wp_register_script( 'edit', 'wp-content/plugins/copyright-date-block/src/edit.js', array('wp-api') );
 	wp_enqueue_script( 'edit' );
