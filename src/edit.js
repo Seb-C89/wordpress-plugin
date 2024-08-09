@@ -31,6 +31,7 @@ import './editor.scss';
  */
 
 import apiFetch from '@wordpress/api-fetch';
+import api from '@wordpress/api';
 import {useLayoutEffect, useState} from 'react';
 
 
@@ -39,8 +40,13 @@ export default /*async*/ function Edit() {
 	//console.log(wp.api);
 
 	const [tables, setTables] = useState('fuck this shit');
+	const options = new api.models.Settings();
+	
 
 	useLayoutEffect( () => {
+		options.fetch().then( ( response ) => {
+			console.log("WPAPI", response)
+		})
         apiFetch( { path: '/myplugin/v1/tables' } ).then( ( tables ) => {
 			setTables(tables);
 			console.log(tables);
