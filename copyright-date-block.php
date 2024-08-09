@@ -29,16 +29,16 @@ function create_block_copyright_date_block_block_init() {
 }
 add_action( 'init', 'create_block_copyright_date_block_block_init' );
 
-function get_tables_name(){
+function get_tables_count(){
 	global $wpdb;
 	$status = $wpdb->get_results('show table status');
 	return array_combine(array_column($status, 'Name'), array_column($status, 'Rows'));
 }
-add_action( 'init', 'get_tables_name');
+add_action( 'init', 'get_tables_count');
 add_action( 'rest_api_init', function() {
 	register_rest_route( 'myplugin/v1', '/tables', array(
 		'methods' => 'GET',
-		'callback' => 'get_tables_name',
+		'callback' => 'get_tables_count',
 		'permission_callback' => '__return_true'
 	));
 	
