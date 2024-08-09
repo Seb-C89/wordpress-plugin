@@ -41,10 +41,39 @@ add_action( 'rest_api_init', function() {
 		'callback' => 'get_tables_count',
 		'permission_callback' => '__return_true'
 	));
-	
 });
-add_option('last_update', 'hello world!');
-add_option('tables_count', 'hello world!');
+
+function wholesomecode_wholesome_plugin_register_settings() {
+    register_setting(
+        'aaa',
+        'lastupdate',
+        [
+            'default'       => '',
+            'show_in_rest'  => true,
+            'type'          => 'string',
+        ]
+    );
+	register_setting(
+        'aaa',
+        'tables_count',
+        [
+            'default'       => [],
+            'show_in_rest'  => array(
+				'schema' => array(
+					'type'  => 'array',
+					'items' => array(
+						'type' => 'string',
+					),
+				),
+			),
+            'type'          => 'array',
+        ]
+    );
+}
+add_action( 'init', 'wholesomecode_wholesome_plugin_register_settings' );
+
+/*add_option('last_update', 'hello world!');
+add_option('tables_count', 'hello world!');*/
 /*function dependecy(){
 	wp_register_script( 'edit', 'wp-content/plugins/copyright-date-block/src/edit.js', array('wp-api') );
 	wp_enqueue_script( 'edit' );
