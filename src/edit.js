@@ -33,15 +33,14 @@ import './editor.scss';
 import apiFetch from '@wordpress/api-fetch';
 import api from '@wordpress/api';
 import {useLayoutEffect, useState} from 'react';
+import Controls from './controls';
 
-
-export default /*async*/ function Edit() {
+export default /*async*/ function Edit(props) {
 	//wp_enqueue_script( 'wp-api' );
 	//console.log(wp.api);
 
 	const [tables, setTables] = useState('fuck this shit');
 	const options = new api.models.Settings();
-	
 
 	useLayoutEffect( () => {
 		options.fetch().then( ( response ) => {
@@ -66,11 +65,14 @@ export default /*async*/ function Edit() {
 	});*/
 
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				JSON.stringify(tables),
-				'copyright-date-block'
-			) }
-		</p>
+		<>
+			<Controls { ...{...props, tables} } />
+			<p { ...useBlockProps() }>
+				{ __(
+					JSON.stringify(tables),
+					'copyright-date-block'
+				) }
+			</p>
+		</>
 	);
 }
