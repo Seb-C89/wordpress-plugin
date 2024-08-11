@@ -4,7 +4,7 @@ const { DropdownMenu, MenuGroup, MenuItem, ToolbarGroup } = wp.components;
 
 const Controls = (props) => {
 	const { attributes, setAttributes } = props;
-	const { theme } = attributes;
+	const { theme, table } = attributes;
 
 	/*const themes = [
 		{
@@ -34,11 +34,11 @@ const Controls = (props) => {
 	const themes = KONTROLS
 	console.log("KONTORLS", KONTROLS)
 
-	return (
+	return (																// https://github.com/WordPress/gutenberg/blob/trunk/docs/getting-started/fundamentals/block-in-the-editor.md
 		<BlockControls group="other">
 			<ToolbarGroup>
-				<DropdownMenu
-					icon={<span>{__('Theme', 'custom-domain')}</span>}
+				<DropdownMenu												// https://developer.wordpress.org/block-editor/reference-guides/components/dropdown-menu/
+					icon={<span>{__('Theme', 'custom-domain')}</span>}		// https://stackoverflow.com/questions/49425755/arrow-functions-and-the-use-of-parentheses-or-or
 					label={__('Switch Theme', 'custom-domain')}
 				>
 					{({ onClose }) => (
@@ -48,7 +48,7 @@ const Controls = (props) => {
 									<MenuItem
 										icon={theme === themeData.key ? 'yes' : ''}
 										onClick={() => {
-											setAttributes({ theme: themeData.key });
+											setAttributes({ table: themeData.key });
 											onClose();
 										}}
 									>

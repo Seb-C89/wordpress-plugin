@@ -69,7 +69,8 @@ export default /*async*/ function Edit(props) {
 			<Controls { ...{...props, tables} } />
 			<p { ...useBlockProps() }>
 				{ __(
-					JSON.stringify(tables),
+					tables[props.attributes.table],
+					//JSON.stringify(tables),
 					'copyright-date-block'
 				) }
 			</p>
