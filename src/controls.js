@@ -29,7 +29,7 @@ const Controls = (props) => {
 		},
 	];*/
 	const KONTROLS = Object.keys(props.tables).map((table) => {
-		return {key: table, label: table}
+		return {key: table, label: table+" "+props.tables[table]}
 	})
 	const themes = KONTROLS
 	console.log("KONTORLS", KONTROLS)
