@@ -72,6 +72,17 @@ function wholesomecode_wholesome_plugin_register_settings() {
 }
 add_action( 'init', 'wholesomecode_wholesome_plugin_register_settings' );
 
+function foobar_func( $atts ){
+	$status = get_tables_count();
+	
+	$param = shortcode_atts( array(
+		'table' => 'wp_posts'
+	), $atts );
+
+	return $status[$param['table']];
+}
+add_shortcode( 'foobar', 'foobar_func' );
+
 /*add_option('last_update', 'hello world!');
 add_option('tables_count', 'hello world!');*/
 /*function dependecy(){
