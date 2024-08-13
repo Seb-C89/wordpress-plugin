@@ -9,7 +9,30 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"gradients": true,
+			"background": true,
+			"text": true,
+			"enableContrastChecker": true,
+			"customClassName": false,
+			"dimensions": {
+				"aspectRatio": true,
+				"minHeight": true
+			},
+			"renaming": true,
+			"shadow": true,
+			"spacing": {
+				"margin": true,
+				"padding": true,
+				"blockGap": true
+			},
+			"typography": {
+				"fontSize": true,
+				"lineHeight": true,
+				"textAlign": true
+			}
+		}
 	},
 	"textdomain": "copyright-date-block",
 	"editorScript": "file:./index.js",
